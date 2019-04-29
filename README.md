@@ -9,14 +9,22 @@ Fore more detailed information have a look at https://en.wikipedia.org/wiki/Rube
 
 
 **Development platform** Windows 10, Unity Version 2017.3.15f3 (recommended by VRND), 
-Visual Studio Community 2017 version 15.9.3, SteamVR Plugin version 2.2.0, Oculus Rift.
+Visual Studio Community 2017 version 15.9.3, SteamVR Plugin version 2.2.0, SteamVR Runtime 1.3.23, Oculus Rift.
 
 **Target platform** Oculus Rift. 
 
 **Third Party Materials**
 - SteamVR Plugin: https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647
-- Starter Project Undacity: https://github.com/udacity/High-Immersion-Starter-Project/archive/master.zip
+- Starter Project Udacity: https://github.com/udacity/High-Immersion-Starter-Project/archive/master.zip
 
 **Limitations**
 
 **Lessons Learned**
+
+**Notes:** 
+
+1) Created Repository on GitHub
+2) Download Starter Project and copied Assets and Projectsettings into rubeGoldbergGame
+3) Testing project runs without erros (seeing factory environment)
+4) Import of SteamVR Plugin following the tutorial of Kristin Dragos (important, the tutorial mirrors not the current version version the SteamVR Plugin, requires that SteamVR is running, otherwise error in console)
+5) Testing project runs without errors
