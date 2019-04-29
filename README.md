@@ -12,3 +12,11 @@ Fore more detailed information have a look at https://en.wikipedia.org/wiki/Rube
 Visual Studio Community 2017 version 15.9.3, SteamVR Plugin version 2.2.0, Oculus Rift.
 
 **Target platform** Oculus Rift. 
+
+**Third Party Materials**
+- SteamVR Plugin: https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647
+- Starter Project Undacity: https://github.com/udacity/High-Immersion-Starter-Project/archive/master.zip
+
+**Limitations**
+
+**Lessons Learned**
