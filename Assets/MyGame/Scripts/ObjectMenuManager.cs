@@ -40,4 +40,11 @@ public class ObjectMenuManager : MonoBehaviour
 
         objectList[currentObjectIndex].SetActive (true);
     }
+
+    public void SpawnCurrentObject()
+    {
+        Instantiate(objectPrefabList[currentObjectIndex], 
+            objectList[currentObjectIndex].transform.position, 
+            objectList[currentObjectIndex].transform.rotation);
+    }
 }
