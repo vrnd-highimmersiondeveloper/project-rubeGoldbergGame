@@ -41,6 +41,18 @@
       "requirement": "optional"
     },
     {
+      "name": "/actions/default/in/SelectMenuItem",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/ConfirmMenuItem",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/ShowObjectMenu",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

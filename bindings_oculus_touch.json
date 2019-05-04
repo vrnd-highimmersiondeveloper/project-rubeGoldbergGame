@@ -228,6 +228,18 @@
                },
                "mode" : "trigger",
                "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/confirmmenuitem"
+                  },
+                  "position" : {
+                     "output" : "/actions/default/in/selectmenuitem"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/joystick"
             }
          ]
       },
