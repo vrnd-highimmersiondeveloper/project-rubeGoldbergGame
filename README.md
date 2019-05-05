@@ -18,6 +18,7 @@ Visual Studio Community 2017 version 15.9.3, SteamVR Plugin version 2.2.0, Steam
 - Steam VR Tutorial Kristan Dragos https://medium.com/@MrsDragos/virtual-reality-interactions-with-steamvr-ead59df686d7
 - SteamVR Plugin: https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647
 - Starter Project Udacity: https://github.com/udacity/High-Immersion-Starter-Project/archive/master.zip
+- TextmeshPro
 
 **Limitations**
 
