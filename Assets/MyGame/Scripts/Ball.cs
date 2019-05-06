@@ -4,6 +4,13 @@ using TMPro;
 
 public class Ball : MonoBehaviour
 {
+    private const string TagGOAL = "Goal";
+    private const string TagBALLTEST = "BallTest";
+    private const string TagCOLLECTIBLE = "Collectible";
+    private const string TagGRAVITYZONE = "GravityZone";
+    private const string TagWINDAREA = "WindArea";
+    private const string TagGROUND = "Ground";
+    private const string TagJUMPAREA = "JumpArea";
     public List<GameObject> starList;
     public TextMeshProUGUI collectedCollectibles;
 
@@ -34,20 +41,20 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == "Goal" && gameObject.tag == "BallTest")
+        if (other.gameObject.tag == TagGOAL && gameObject.tag == TagBALLTEST)
         {
             ResetAfterBallHitsGround ();
         }
-        else if (other.gameObject.tag == "Collectible")
+        else if (other.gameObject.tag == TagCOLLECTIBLE)
         {
             SetCollectibleCollected (other.gameObject);
         }
-        else if (other.gameObject.tag == "GravityZone")
+        else if (other.gameObject.tag == TagGRAVITYZONE)
         {
             rb.useGravity = false;
             rb.AddForce (Vector3.up * 10f);
         }
-        else if (other.gameObject.tag == "WindArea")
+        else if (other.gameObject.tag == TagWINDAREA)
         {
             inFanZone = true;
             fanDirection = other.gameObject.transform.position;
@@ -56,11 +63,11 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerExit (Collider other)
     {
-        if (other.gameObject.tag == "GravityZone")
+        if (other.gameObject.tag == TagGRAVITYZONE)
         {
             rb.useGravity = true;
         }
-        else if (other.gameObject.tag == "WindArea")
+        else if (other.gameObject.tag == TagWINDAREA)
         {
             inFanZone = false;
         }
@@ -68,12 +75,12 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter (Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == TagGROUND)
         {
             ResetAfterBallHitsGround ();
         }
 
-        if (collision.gameObject.tag == "JumpArea")
+        if (collision.gameObject.tag == TagJUMPAREA)
         {
             rb.AddForce (Vector3.up * 200f);
         }
