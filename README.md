@@ -20,6 +20,11 @@ Visual Studio Community 2017 version 15.9.3, SteamVR Plugin version 2.2.0, Steam
 - Starter Project Udacity: https://github.com/udacity/High-Immersion-Starter-Project/archive/master.zip
 - TextmeshPro
 
+**Controls**
+- Right touchpad: touch joystick: enable menu: Joystick left/right > 0.8 switch through Rube Goldberg objects, press joystick spawn selected object.
+- Left touchpad: joystick indicate teleport goal, release teleport to before indicated goal. 
+- Both controllers: trigger grab (grab object), trigger release (release object).
+
 **Limitations**
 
 **Lessons Learned**
