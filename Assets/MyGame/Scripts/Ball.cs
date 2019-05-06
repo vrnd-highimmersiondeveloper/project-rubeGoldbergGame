@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Ball : MonoBehaviour {
-
+public class Ball : MonoBehaviour
+{
     public List<GameObject> starList;
     public TextMeshProUGUI collectedCollectibles;
 
@@ -22,33 +21,22 @@ public class Ball : MonoBehaviour {
 
     private void Start ()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
-        SetBallsDefaultPosition();
+        rb = gameObject.GetComponent<Rigidbody> ();
+        SetBallsDefaultPosition ();
     }
 
-    private void Update()
-    {
-        if (inFanZone)
-        {
-            Debug.Log("in Fan Zone");
-           // rb.AddForce(new Vector3(fanDirection.x, fanDirection.y,fanDirection.z) * 100f);
-        }
-    }
-
-    private void SetBallsDefaultPosition()
+    private void SetBallsDefaultPosition ()
     {
         ballDefaultPosX = transform.position.x;
         ballDefaultPosY = transform.position.y;
         ballDefaultPosZ = transform.position.z;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter (Collider other)
     {
-        Debug.Log("Tiggerevent" + other.gameObject.name);
         if (other.gameObject.tag == "Goal" && gameObject.tag == "BallTest")
         {
-            Debug.Log("Goal reached");
-            ResetAfterBallHitsGround();
+            ResetAfterBallHitsGround ();
         }
         else if (other.gameObject.tag == "Collectible")
         {
@@ -56,9 +44,8 @@ public class Ball : MonoBehaviour {
         }
         else if (other.gameObject.tag == "GravityZone")
         {
-            Debug.Log("ener gravity");
             rb.useGravity = false;
-            rb.AddForce(Vector3.up * 10f);
+            rb.AddForce (Vector3.up * 10f);
         }
         else if (other.gameObject.tag == "WindArea")
         {
@@ -67,11 +54,10 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit (Collider other)
     {
         if (other.gameObject.tag == "GravityZone")
         {
-            Debug.Log("exit gravity");
             rb.useGravity = true;
         }
         else if (other.gameObject.tag == "WindArea")
@@ -80,73 +66,67 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter (Collision collision)
     {
-        Debug.Log("Collisionevent" + collision.gameObject.name);
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
-            ResetAfterBallHitsGround();
+            ResetAfterBallHitsGround ();
         }
 
-        if(collision.gameObject.tag == "JumpArea")
+        if (collision.gameObject.tag == "JumpArea")
         {
-            Debug.Log("Jump");
-            rb.AddForce(Vector3.up * 200f);
+            rb.AddForce (Vector3.up * 200f);
         }
     }
 
-    private void ResetAfterBallHitsGround()
+    private void ResetAfterBallHitsGround ()
     {
-        Debug.Log("Reset " + gameObject.transform.position);
-        gameObject.SetActive(false);
-        ResetBallPosition("BallTest");
-        ResetCollectiblesCollectedNumber();
-        SetAllCollectiblesActive();
-        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        gameObject.SetActive(true);
+        gameObject.SetActive (false);
+        ResetBallPosition ();
+        ResetCollectiblesCollectedNumber ();
+        SetAllCollectiblesActive ();
+        gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
+        gameObject.SetActive (true);
     }
 
-    private void ResetBallPosition(string tag)
+    private void ResetBallPosition ()
     {
-        gameObject.transform.position = new Vector3(ballDefaultPosX, 
-                                                    ballDefaultPosY, 
-                                                    ballDefaultPosZ);
+        gameObject.transform.position = new Vector3 (ballDefaultPosX, 
+                                                     ballDefaultPosY, 
+                                                     ballDefaultPosZ);
     }
 
     //Interaction with Hands
-    public void SetBallAttached()
+    public void SetBallAttached ()
     {
         isBallAttached = true;
     }
 
-    public void SetBallDetached()
+    public void SetBallDetached ()
     {
         isBallAttached = false;
     }
 
     //Collectibles
-    private void SetAllCollectiblesActive()
+    private void SetAllCollectiblesActive ()
     {
         foreach (GameObject item in starList)
         {
-            item.SetActive(true);
+            item.SetActive (true);
         }
     }
 
-    private void SetCollectibleCollected(GameObject collectible)
+    private void SetCollectibleCollected (GameObject collectible)
     {
-        collectible.SetActive(false);
+        collectible.SetActive (false);
         numberCollected++;
-        //LevelManager.Instance.NumberCollectiblesCollected = numberCollected;
-        collectedCollectibles.text = numberCollected.ToString();
-    }
-
-    private void ResetCollectiblesCollectedNumber()
-    {
-        numberCollected = 0;
-        //LevelManager.Instance.NumberCollectiblesCollected = numberCollected;
         collectedCollectibles.text = numberCollected.ToString ();
     }
 
+    private void ResetCollectiblesCollectedNumber ()
+    {
+        numberCollected = 0;
+        collectedCollectibles.text = numberCollected.ToString ();
+    }
 }
