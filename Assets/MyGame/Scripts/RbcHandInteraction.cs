@@ -55,7 +55,6 @@ public class RbcHandInteraction : MonoBehaviour
             }
 
             var confirmItem = confirmMenuItemAction.GetState (SteamVR_Input_Sources.RightHand);
-
             if (confirmItem && !isJoystickClicked)
             {
                 SpawnObject ();
@@ -70,7 +69,6 @@ public class RbcHandInteraction : MonoBehaviour
         {
             objectmenuManager.gameObject.SetActive (false);
         }
-        
     }
 
     public void SpawnObject ()
