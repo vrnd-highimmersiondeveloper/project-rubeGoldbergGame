@@ -88,9 +88,9 @@ public class Ball : MonoBehaviour {
             ResetAfterBallHitsGround();
         }
 
-        if(collision.gameObject.name == "TrampolineCube")
+        if(collision.gameObject.tag == "JumpArea")
         {
-            Debug.Log("Tramponie");
+            Debug.Log("Jump");
             rb.AddForce(Vector3.up * 200f);
         }
     }
