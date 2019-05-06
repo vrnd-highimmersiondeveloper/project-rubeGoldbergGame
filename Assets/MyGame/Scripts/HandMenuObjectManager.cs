@@ -41,7 +41,7 @@ public class HandMenuObjectManager : MonoBehaviour
         objectList[currentObjectIndex].SetActive (true);
     }
 
-    public void SpawnCurrentObject()
+    public void SpawnCurrentObject ()
     {
         Instantiate(objectPrefabList[currentObjectIndex], 
             objectList[currentObjectIndex].transform.position, 
