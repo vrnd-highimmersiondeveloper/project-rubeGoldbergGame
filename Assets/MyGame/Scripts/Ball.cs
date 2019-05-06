@@ -54,7 +54,7 @@ public class Ball : MonoBehaviour {
         {
             SetCollectibleCollected (other.gameObject);
         }
-        else if (other.gameObject.name == "GravityZone")
+        else if (other.gameObject.tag == "GravityZone")
         {
             Debug.Log("ener gravity");
             rb.useGravity = false;
@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "GravityZone")
+        if (other.gameObject.tag == "GravityZone")
         {
             Debug.Log("exit gravity");
             rb.useGravity = true;

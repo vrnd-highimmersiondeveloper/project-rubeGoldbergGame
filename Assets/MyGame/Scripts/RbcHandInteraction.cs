@@ -21,7 +21,7 @@ public class RbcHandInteraction : MonoBehaviour
     public float distance;
     public bool hasSwipedLeft = false;
     public bool hasSwipedRight = false;
-    private bool confirmTiggerSet = false;
+    private bool isJoystickClicked = false;
 
     // Use this for initialization
     void Start ()
@@ -68,15 +68,20 @@ public class RbcHandInteraction : MonoBehaviour
             {
                 hasSwipedLeft = false;
                 hasSwipedRight = false;
-                confirmTiggerSet = false;
+                //isJoystickClicked = false;
             }
 
             var confirmItem = confirmMenuItemAction.GetState(SteamVR_Input_Sources.RightHand);
+            Debug.Log("confirm Item " + confirmItem + "isJoystickClicked " + isJoystickClicked);
 
-            if (confirmItem && !confirmTiggerSet)
+            if (confirmItem && !isJoystickClicked)
             {
                 SpawnObject();
-                confirmTiggerSet = true;
+                isJoystickClicked = true;
+            }
+            if (!confirmItem)
+            {
+                isJoystickClicked = false;
             }
         }
         else
