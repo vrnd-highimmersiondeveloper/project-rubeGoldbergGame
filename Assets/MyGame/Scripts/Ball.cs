@@ -11,6 +11,8 @@ public class Ball : MonoBehaviour
     private const string TagWINDAREA = "WindArea";
     private const string TagGROUND = "Ground";
     private const string TagJUMPAREA = "JumpArea";
+    private const float speed = 10f;
+    private const float jumpHight = 200f;
     public List<GameObject> starList;
     public TextMeshProUGUI collectedCollectibles;
 
@@ -52,7 +54,7 @@ public class Ball : MonoBehaviour
         else if (other.gameObject.tag == TagGRAVITYZONE)
         {
             rb.useGravity = false;
-            rb.AddForce (Vector3.up * 10f);
+            rb.AddForce (Vector3.up * speed);
         }
         else if (other.gameObject.tag == TagWINDAREA)
         {
@@ -82,7 +84,7 @@ public class Ball : MonoBehaviour
 
         if (collision.gameObject.tag == TagJUMPAREA)
         {
-            rb.AddForce (Vector3.up * 200f);
+            rb.AddForce (Vector3.up * jumpHight);
         }
     }
 
