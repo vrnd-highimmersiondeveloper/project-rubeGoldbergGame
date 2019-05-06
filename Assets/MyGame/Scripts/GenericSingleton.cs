@@ -13,12 +13,12 @@ public class GenericSingletonClass<T> : MonoBehaviour where T : Component
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<T>();
+                instance = FindObjectOfType<T> ();
                 if (instance = null)
                 {
-                    GameObject obj = new GameObject();
-                    obj.name = typeof(T).Name;
-                    instance = obj.AddComponent<T>();
+                    GameObject obj = new GameObject ();
+                    obj.name = typeof (T).Name;
+                    instance = obj.AddComponent<T> ();
                 }
             }
             return instance;
@@ -31,12 +31,12 @@ public class GenericSingletonClass<T> : MonoBehaviour where T : Component
         {
             Debug.Log("Assign this " + Tag + " instance  with name " + gameObject.name);
             instance = this as T;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad (this.gameObject);
         }
         else
         {
-            Debug.Log("Destroy " + Tag + " " + this.gameObject.name);
-            Destroy(gameObject);
+            Debug.Log ("Destroy " + Tag + " " + this.gameObject.name);
+            Destroy (gameObject);
         }
     }
 }
