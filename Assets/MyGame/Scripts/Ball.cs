@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour {
     public List<GameObject> starList;
     public TextMeshProUGUI collectedCollectibles;
 
+    private Rigidbody rb;
+
     private float ballDefaultPosX = 0.0f;
     private float ballDefaultPosY = 0.0f;
     private float ballDefaultPosZ = 0.0f;
@@ -15,10 +17,22 @@ public class Ball : MonoBehaviour {
     private int numberCollected = 0;
     private bool isBallAttached = false;
     private bool isTeleportAreaHit = false;
+    private bool inFanZone = false;
+    private Vector3 fanDirection;
 
     private void Start ()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
         SetBallsDefaultPosition();
+    }
+
+    private void Update()
+    {
+        if (inFanZone)
+        {
+            Debug.Log("in Fan Zone");
+           // rb.AddForce(new Vector3(fanDirection.x, fanDirection.y,fanDirection.z) * 100f);
+        }
     }
 
     private void SetBallsDefaultPosition()
@@ -40,6 +54,30 @@ public class Ball : MonoBehaviour {
         {
             SetCollectibleCollected (other.gameObject);
         }
+        else if (other.gameObject.name == "GravityZone")
+        {
+            Debug.Log("ener gravity");
+            rb.useGravity = false;
+            rb.AddForce(Vector3.up * 10f);
+        }
+        else if (other.gameObject.tag == "WindArea")
+        {
+            inFanZone = true;
+            fanDirection = other.gameObject.transform.position;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "GravityZone")
+        {
+            Debug.Log("exit gravity");
+            rb.useGravity = true;
+        }
+        else if (other.gameObject.tag == "WindArea")
+        {
+            inFanZone = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,6 +86,12 @@ public class Ball : MonoBehaviour {
         if(collision.gameObject.tag == "Ground")
         {
             ResetAfterBallHitsGround();
+        }
+
+        if(collision.gameObject.name == "TrampolineCube")
+        {
+            Debug.Log("Tramponie");
+            rb.AddForce(Vector3.up * 200f);
         }
     }
 
