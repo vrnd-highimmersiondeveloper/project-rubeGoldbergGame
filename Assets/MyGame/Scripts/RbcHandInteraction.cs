@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
-using Valve.VR.InteractionSystem;
 
 public class RbcHandInteraction : MonoBehaviour
 {
@@ -23,60 +20,45 @@ public class RbcHandInteraction : MonoBehaviour
     public bool hasSwipedRight = false;
     private bool isJoystickClicked = false;
 
-    // Use this for initialization
-    void Start ()
-    {
-		
-	}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.tag);
-    }
-
     private void SwipeRight ()
     {
-        objectmenuManager.MenuRight();
+        objectmenuManager.MenuRight ();
         hasSwipedRight = true;
     }
 
     private void SwipeLeft ()
     {
-        objectmenuManager.MenuLeft();
+        objectmenuManager.MenuLeft ();
         hasSwipedLeft = true;
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
-        var menuVisible = showObjectMenu.GetState(SteamVR_Input_Sources.RightHand);
+        var menuVisible = showObjectMenu.GetState (SteamVR_Input_Sources.RightHand);
         if (menuVisible)
         {
-            objectmenuManager.gameObject.SetActive(true);
-            var joystickAxisRH = selectMenuItemAction.GetAxis(SteamVR_Input_Sources.RightHand);
+            objectmenuManager.gameObject.SetActive (true);
+            var joystickAxisRH = selectMenuItemAction.GetAxis (SteamVR_Input_Sources.RightHand);
 
-            //Debug.Log(rightHoriz.x);
             if (joystickAxisRH.x < leftBoundaryValueX && !hasSwipedLeft)
             {
                 SwipeLeft();
             }
             else if (joystickAxisRH.x > rightBoundaryValueX && !hasSwipedRight)
             {
-                SwipeRight();
+                SwipeRight ();
             }
             else if (joystickAxisRH.x == 0.0f)
             {
                 hasSwipedLeft = false;
                 hasSwipedRight = false;
-                //isJoystickClicked = false;
             }
 
-            var confirmItem = confirmMenuItemAction.GetState(SteamVR_Input_Sources.RightHand);
-            Debug.Log("confirm Item " + confirmItem + "isJoystickClicked " + isJoystickClicked);
+            var confirmItem = confirmMenuItemAction.GetState (SteamVR_Input_Sources.RightHand);
 
             if (confirmItem && !isJoystickClicked)
             {
-                SpawnObject();
+                SpawnObject ();
                 isJoystickClicked = true;
             }
             if (!confirmItem)
@@ -86,13 +68,13 @@ public class RbcHandInteraction : MonoBehaviour
         }
         else
         {
-            objectmenuManager.gameObject.SetActive(false);
+            objectmenuManager.gameObject.SetActive (false);
         }
         
     }
 
-    public void SpawnObject()
+    public void SpawnObject ()
     {
-        objectmenuManager.SpawnCurrentObject();
+        objectmenuManager.SpawnCurrentObject ();
     }
 }
