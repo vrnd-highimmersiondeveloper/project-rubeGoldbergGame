@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -29,6 +31,8 @@ public class Ball : MonoBehaviour
     private bool inFanZone = false;
     private Vector3 fanDirection;
 
+   
+
     private void Start ()
     {
         rb = gameObject.GetComponent<Rigidbody> ();
@@ -48,6 +52,10 @@ public class Ball : MonoBehaviour
         {
             ResetAfterBallHitsGround ();
         }
+        else if (other.gameObject.tag == TagGOAL && gameObject.tag == TagBALLPLAY)
+        {
+            SwitchScene();
+        }
         else if (other.gameObject.tag == TagCOLLECTIBLE)
         {
             SetCollectibleCollected (other.gameObject);
@@ -62,6 +70,11 @@ public class Ball : MonoBehaviour
             inFanZone = true;
             fanDirection = other.gameObject.transform.position;
         }
+    }
+
+    private static void SwitchScene()
+    {
+        SteamVR_LoadLevel.Begin("GameOver", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
     }
 
     private void OnTriggerExit (Collider other)
@@ -129,10 +142,14 @@ public class Ball : MonoBehaviour
     //Collectibles
     private void SetAllCollectiblesActive ()
     {
-        foreach (GameObject item in starList)
+        if(SceneManager.GetActiveScene().name != "GameOver")
         {
-            item.SetActive (true);
+            foreach (GameObject item in starList)
+            {
+                item.SetActive(true);
+            }
         }
+
     }
 
     private void SetCollectibleCollected (GameObject collectible)
