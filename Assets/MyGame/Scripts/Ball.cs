@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     private const string TagGOAL = "Goal";
     private const string TagBALLTEST = "BallTest";
+    private const string TagBALLPLAY = "BallPlay";
     private const string TagCOLLECTIBLE = "Collectible";
     private const string TagGRAVITYZONE = "GravityZone";
     private const string TagWINDAREA = "WindArea";
@@ -82,7 +83,7 @@ public class Ball : MonoBehaviour
             ResetAfterBallHitsGround ();
         }
 
-        if (collision.gameObject.tag == TagJUMPAREA)
+        else if (collision.gameObject.tag == TagJUMPAREA)
         {
             rb.AddForce (Vector3.up * jumpHight);
         }
@@ -110,6 +111,14 @@ public class Ball : MonoBehaviour
     public void SetBallAttached ()
     {
         isBallAttached = true;
+        if (gameObject.tag == TagBALLTEST)
+        {
+            LevelManager.Instance.PlayMode = false;
+        }
+        else if (gameObject.tag == TagBALLPLAY)
+        {
+            LevelManager.Instance.PlayMode = true; 
+        }
     }
 
     public void SetBallDetached ()

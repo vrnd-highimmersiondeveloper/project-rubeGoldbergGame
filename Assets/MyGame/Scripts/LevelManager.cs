@@ -8,6 +8,7 @@ public class LevelManager : GenericSingletonClass<LevelManager>
 {
 
     private int numberCollectibesCollected = 0;
+    private bool playMode;
 
     public int NumberCollectiblesCollected
     {
@@ -21,6 +22,19 @@ public class LevelManager : GenericSingletonClass<LevelManager>
         {
             Debug.Log("set nbr collected collectibles " + numberCollectibesCollected);
             numberCollectibesCollected = value;
+        }
+    }
+
+    public bool PlayMode
+    {
+        get
+        {
+            return playMode;
+        }
+
+        set
+        {
+            playMode = value;
         }
     }
 }
