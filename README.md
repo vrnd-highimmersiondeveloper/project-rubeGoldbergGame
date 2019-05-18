@@ -28,6 +28,8 @@ Visual Studio Community 2017 version 15.9.3, SteamVR Plugin version 2.2.0, Steam
 **Limitations**
 
 **Lessons Learned**
+Unity/SteamVR Interaction: Tried to implement button interation. Disabled standalone input module, added VR Cam to Canvas Component. Not working after this, behaviour remains the same: 
+Button can be highlighted with hmd center, not with laser pointer. Hover over button with laser pointer has no effect.
 
 **Notes:** 
 Difference between Player Prefab vs. SteamVR CameraRig: https://steamcommunity.com/app/358720/discussions/0/133262487496844726/
