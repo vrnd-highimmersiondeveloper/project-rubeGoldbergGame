@@ -6,6 +6,12 @@ public class ButtonManager : MonoBehaviour
 {
     public SteamVR_Action_Boolean grapPinch;
     public SteamVR_Input_Sources inputSource;
+    private bool showGrid = false;
+    private float fadeOutTime = 2.0f;
+    private float rgbR = 0.0f;
+    private float rgbG = 0.0f;
+    private float rgbB = 0.0f;
+    private float rgbA = 1.0f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,23 +30,22 @@ public class ButtonManager : MonoBehaviour
         if (isRightLaserPointerUsed(other) && gameObject.name == MyConstManager.TAGBTNTUTORIAL)
         {
             gameObject.SetActive(false);
-            SteamVR_LoadLevel.Begin("02Tutorial", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+            SteamVR_LoadLevel.Begin(MyConstManager.SCENETUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
         else if (isLeftLaserPointerUsed(other) &&  gameObject.name == MyConstManager.TAGBTNTUTORIAL)
         {
             gameObject.SetActive(false);
-            SteamVR_LoadLevel.Begin("02Tutorial", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+            SteamVR_LoadLevel.Begin(MyConstManager.SCENETUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
-
         else if (isRightLaserPointerUsed(other) && gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             gameObject.SetActive(false);
-            SteamVR_LoadLevel.Begin("Level1", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+            SteamVR_LoadLevel.Begin(MyConstManager.SCENELEVEL1, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
         else if (isLeftLaserPointerUsed(other) && gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             gameObject.SetActive(false);
-            SteamVR_LoadLevel.Begin("Level1", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+            SteamVR_LoadLevel.Begin(MyConstManager.SCENELEVEL1, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
     }
 
@@ -50,7 +55,6 @@ public class ButtonManager : MonoBehaviour
         {
             SetColorToButton(Color.white);
         }
-
         else if (gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             SetColorToButton(Color.white);
@@ -88,15 +92,14 @@ public class ButtonManager : MonoBehaviour
         bool isLeftHandCollider = false;
         Transform[] tmp = other.gameObject.GetComponentsInParent<Transform>();
 
-        for (int i=0;i < tmp.Length; i++)
+        for (int i=0; i < tmp.Length; i++)
         {
-            if (tmp[i].gameObject.name.Contains("Left"))
+            if (tmp[i].gameObject.name.Contains(MyConstManager.LEFT))
             {
                 isLeftHandCollider = true;
                 break;
             }
         }
-
         return isLeftHandCollider;
     }
 
@@ -104,5 +107,4 @@ public class ButtonManager : MonoBehaviour
     {
         return !isLeftColliderInUse(other);
     }
-
 }
