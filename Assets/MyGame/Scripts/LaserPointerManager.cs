@@ -27,7 +27,7 @@ public class LaserPointerManager : MonoBehaviour
 
         for (int i = 0; i < tmpObjects.Length; i++)
         {
-            if (tmpObjects[i].name.StartsWith("New"))
+            if (tmpObjects[i].name.StartsWith("Beam"))
             {
                 Destroy(tmpObjects[i].gameObject);
                 break;

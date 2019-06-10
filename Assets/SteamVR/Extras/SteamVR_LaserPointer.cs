@@ -15,8 +15,8 @@ namespace Valve.VR.Extras
         public Color color;
         public float thickness = 0.002f;
         public Color clickColor = Color.green;
-        public GameObject holder;
-        public GameObject pointer;
+        private GameObject holder;
+        private GameObject pointer;
         bool isActive = false;
         public bool addRigidBody = false;
         public Transform reference;
@@ -39,19 +39,22 @@ namespace Valve.VR.Extras
             
 
             holder = new GameObject();
+            holder.gameObject.name = "BeamObjectHolder";
             holder.transform.parent = this.transform;
             holder.transform.localPosition = Vector3.zero;
             holder.transform.localRotation = Quaternion.identity;
 
             pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            pointer.gameObject.tag = "LaserBeam";
             pointer.transform.parent = holder.transform;
-            pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
+            pointer.transform.localScale = new Vector3(thickness, thickness, 50f);
             pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
             pointer.transform.localRotation = Quaternion.identity;
-            BoxCollider collider = pointer.GetComponent<BoxCollider>();
+            BoxCollider collider = pointer.AddComponent<BoxCollider>();
+            //BoxCollider collider = pointer.GetComponent<BoxCollider>();
             if (addRigidBody)
             {
-                if (collider)
+                if (collider != null)
                 {
                     collider.isTrigger = true;
                 }
@@ -60,7 +63,7 @@ namespace Valve.VR.Extras
             }
             else
             {
-                if (collider)
+                if (collider != null)
                 {
                     Object.Destroy(collider);
                 }
@@ -87,7 +90,6 @@ namespace Valve.VR.Extras
             if (PointerOut != null)
                 PointerOut(this, e);
         }
-
         
         private void Update()
         {
@@ -97,7 +99,7 @@ namespace Valve.VR.Extras
                 this.transform.GetChild(0).gameObject.SetActive(true);
             }
 
-            float dist = 100f;
+            float dist = 50f;
 
             Ray raycast = new Ray(transform.position, transform.forward);
             RaycastHit hit;
@@ -127,9 +129,10 @@ namespace Valve.VR.Extras
             {
                 previousContact = null;
             }
-            if (bHit && hit.distance < 100f)
+            if (bHit && hit.distance < 50f)
             {
-                dist = hit.distance;
+                dist = Mathf.Clamp(hit.distance,7f,50f);
+                //Debug.Log("Set dist + " + dist);
             }
 
             if (bHit && interactWithUI.GetStateUp(pose.inputSource))
