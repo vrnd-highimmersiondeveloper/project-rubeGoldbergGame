@@ -9,11 +9,11 @@ public class ButtonManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.name == "BtnTutorial")
+        if (gameObject.name == MyConstManager.TAGBTNTUTORIAL)
         {
             SetColorToButton(Color.blue);
         }
-        else if (gameObject.name == "BtnAnonymous")
+        else if (gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             SetColorToButton(Color.blue);
         }
@@ -21,23 +21,23 @@ public class ButtonManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (isRightLaserPointerUsed(other) && gameObject.name == "BtnTutorial")
+        if (isRightLaserPointerUsed(other) && gameObject.name == MyConstManager.TAGBTNTUTORIAL)
         {
             gameObject.SetActive(false);
             SteamVR_LoadLevel.Begin("02Tutorial", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
         }
-        else if (isLeftLaserPointerUsed(other) &&  gameObject.name == "BtnTutorial")
+        else if (isLeftLaserPointerUsed(other) &&  gameObject.name == MyConstManager.TAGBTNTUTORIAL)
         {
             gameObject.SetActive(false);
             SteamVR_LoadLevel.Begin("02Tutorial", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
         }
 
-        else if (isRightLaserPointerUsed(other) && gameObject.name == "BtnAnonymous")
+        else if (isRightLaserPointerUsed(other) && gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             gameObject.SetActive(false);
             SteamVR_LoadLevel.Begin("Level1", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
         }
-        else if (isLeftLaserPointerUsed(other) && gameObject.name == "BtnAnonymous")
+        else if (isLeftLaserPointerUsed(other) && gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             gameObject.SetActive(false);
             SteamVR_LoadLevel.Begin("Level1", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
@@ -46,12 +46,12 @@ public class ButtonManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (gameObject.name == "BtnTutorial")
+        if (gameObject.name == MyConstManager.TAGBTNTUTORIAL)
         {
             SetColorToButton(Color.white);
         }
 
-        else if (gameObject.name == "BtnAnonymous")
+        else if (gameObject.name == MyConstManager.TAGBTNANONYMOUS)
         {
             SetColorToButton(Color.white);
         }
