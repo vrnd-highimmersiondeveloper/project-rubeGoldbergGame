@@ -135,7 +135,7 @@ public class Ball : MonoBehaviour
     //Collectibles
     private void SetAllCollectiblesActive ()
     {
-        if(SceneManager.GetActiveScene().name != "GameOver")
+        if(SceneManager.GetActiveScene().name != MyConstManager.SceneGAMEOVER)
         {
             foreach (GameObject item in starList)
             {

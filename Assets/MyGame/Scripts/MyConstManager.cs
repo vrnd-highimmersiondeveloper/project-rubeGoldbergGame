@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MyConstManager{
 
-    public const string TAGBTNTUTORIAL = "BtnTutorial";
-    public const string TAGBTNANONYMOUS = "BtnAnonymous";
+    public const string TagBTNTUTORIAL = "BtnTutorial";
+    public const string TagBTNANONYMOUS = "BtnAnonymous";
     public const string TagGOAL = "Goal";
     public const string TagBALLTEST = "BallTest";
     public const string TagBALLPLAY = "BallPlay";
@@ -15,8 +15,9 @@ public class MyConstManager{
     public const string TagGROUND = "Ground";
     public const string TagJUMPAREA = "JumpArea";
 
-    public const string SCENETUTORIAL = "02Tutorial";
-    public const string SCENELEVEL1 = "Level1";
+    public const string SceneTUTORIAL = "02Tutorial";
+    public const string SceneLEVEL1 = "Level1";
+    public const string SceneGAMEOVER = "GameOver";
 
     public const string LEFT = "Left";
 }

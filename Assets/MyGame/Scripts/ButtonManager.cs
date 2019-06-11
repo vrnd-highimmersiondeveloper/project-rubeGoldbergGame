@@ -15,11 +15,11 @@ public class ButtonManager : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (gameObject.name == MyConstManager.TAGBTNTUTORIAL)
+        if (gameObject.name == MyConstManager.TagBTNTUTORIAL)
         {
             SetColorToButton (Color.blue);
         }
-        else if (gameObject.name == MyConstManager.TAGBTNANONYMOUS)
+        else if (gameObject.name == MyConstManager.TagBTNANONYMOUS)
         {
             SetColorToButton (Color.blue);
         }
@@ -27,35 +27,35 @@ public class ButtonManager : MonoBehaviour
 
     private void OnTriggerStay (Collider other)
     {
-        if (isRightLaserPointerUsed (other) && gameObject.name == MyConstManager.TAGBTNTUTORIAL)
+        if (isRightLaserPointerUsed (other) && gameObject.name == MyConstManager.TagBTNTUTORIAL)
         {
             gameObject.SetActive (false);
-            SteamVR_LoadLevel.Begin(MyConstManager.SCENETUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
+            SteamVR_LoadLevel.Begin(MyConstManager.SceneTUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
-        else if (isLeftLaserPointerUsed (other) &&  gameObject.name == MyConstManager.TAGBTNTUTORIAL)
+        else if (isLeftLaserPointerUsed (other) &&  gameObject.name == MyConstManager.TagBTNTUTORIAL)
         {
             gameObject.SetActive (false);
-            SteamVR_LoadLevel.Begin (MyConstManager.SCENETUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
+            SteamVR_LoadLevel.Begin (MyConstManager.SceneTUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
-        else if (isRightLaserPointerUsed (other) && gameObject.name == MyConstManager.TAGBTNANONYMOUS)
+        else if (isRightLaserPointerUsed (other) && gameObject.name == MyConstManager.TagBTNANONYMOUS)
         {
             gameObject.SetActive (false);
-            SteamVR_LoadLevel.Begin (MyConstManager.SCENELEVEL1, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
+            SteamVR_LoadLevel.Begin (MyConstManager.SceneLEVEL1, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
-        else if (isLeftLaserPointerUsed (other) && gameObject.name == MyConstManager.TAGBTNANONYMOUS)
+        else if (isLeftLaserPointerUsed (other) && gameObject.name == MyConstManager.TagBTNANONYMOUS)
         {
             gameObject.SetActive (false);
-            SteamVR_LoadLevel.Begin (MyConstManager.SCENELEVEL1, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
+            SteamVR_LoadLevel.Begin (MyConstManager.SceneLEVEL1, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
     }
 
     private void OnTriggerExit (Collider other)
     {
-        if (gameObject.name == MyConstManager.TAGBTNTUTORIAL)
+        if (gameObject.name == MyConstManager.TagBTNTUTORIAL)
         {
             SetColorToButton (Color.white);
         }
-        else if (gameObject.name == MyConstManager.TAGBTNANONYMOUS)
+        else if (gameObject.name == MyConstManager.TagBTNANONYMOUS)
         {
             SetColorToButton (Color.white);
         }
