@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class LevelManager : GenericSingletonClass<LevelManager>
 {
-
     private int numberCollectibesCollected = 0;
-    private bool playMode;
+    private bool playMode = false;
 
     public int NumberCollectiblesCollected
     {
@@ -36,5 +35,10 @@ public class LevelManager : GenericSingletonClass<LevelManager>
         {
             playMode = value;
         }
+    }
+
+    public void DeactivateEditBall(Ball ball)
+    {
+        ball.enabled = false;
     }
 }

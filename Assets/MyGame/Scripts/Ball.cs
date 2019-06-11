@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
-   
     private const float speed = 10f;
     private const float jumpHight = 200f;
     public List<GameObject> starList;
@@ -19,12 +18,10 @@ public class Ball : MonoBehaviour
     private float ballDefaultPosZ = 0.0f;
 
     private int numberCollected = 0;
-    private bool isBallAttached = false;
+    private bool isBallPlayAttached = false;
     private bool isTeleportAreaHit = false;
     private bool inFanZone = false;
     private Vector3 fanDirection;
-
-   
 
     private void Start ()
     {
@@ -41,7 +38,7 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == MyConstManager.TagGOAL && gameObject.tag == MyConstManager.TagBALLTEST)
+        if (other.gameObject.tag == MyConstManager.TagGOAL && gameObject.tag == MyConstManager.TagBALLEDIT)
         {
             ResetAfterBallHitsGround ();
         }
@@ -114,22 +111,23 @@ public class Ball : MonoBehaviour
     }
 
     //Interaction with Hands
-    public void SetBallAttached ()
+    public void MarkBallPlayAttached ()
     {
-        isBallAttached = true;
-        if (gameObject.tag == MyConstManager.TagBALLTEST)
+        if (gameObject.tag == MyConstManager.TagBALLEDIT)
         {
-            LevelManager.Instance.PlayMode = false;
+            isBallPlayAttached = false;
         }
         else if (gameObject.tag == MyConstManager.TagBALLPLAY)
         {
-            LevelManager.Instance.PlayMode = true; 
+            isBallPlayAttached = true;
         }
+
+        LevelManager.Instance.PlayMode = isBallPlayAttached;
     }
 
-    public void SetBallDetached ()
+    public void SetBallPlayDetached ()
     {
-        isBallAttached = false;
+        isBallPlayAttached = false;
     }
 
     //Collectibles
@@ -142,7 +140,6 @@ public class Ball : MonoBehaviour
                 item.SetActive(true);
             }
         }
-
     }
 
     private void SetCollectibleCollected (GameObject collectible)

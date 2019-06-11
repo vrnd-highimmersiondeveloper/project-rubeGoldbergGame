@@ -7,7 +7,7 @@ public class MyConstManager{
     public const string TagBTNTUTORIAL = "BtnTutorial";
     public const string TagBTNANONYMOUS = "BtnAnonymous";
     public const string TagGOAL = "Goal";
-    public const string TagBALLTEST = "BallTest";
+    public const string TagBALLEDIT = "BallEdit";
     public const string TagBALLPLAY = "BallPlay";
     public const string TagCOLLECTIBLE = "Collectible";
     public const string TagGRAVITYZONE = "GravityZone";
