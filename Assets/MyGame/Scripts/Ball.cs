@@ -6,14 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
-    private const string TagGOAL = "Goal";
-    private const string TagBALLTEST = "BallTest";
-    private const string TagBALLPLAY = "BallPlay";
-    private const string TagCOLLECTIBLE = "Collectible";
-    private const string TagGRAVITYZONE = "GravityZone";
-    private const string TagWINDAREA = "WindArea";
-    private const string TagGROUND = "Ground";
-    private const string TagJUMPAREA = "JumpArea";
+   
     private const float speed = 10f;
     private const float jumpHight = 200f;
     public List<GameObject> starList;
@@ -48,24 +41,24 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == TagGOAL && gameObject.tag == TagBALLTEST)
+        if (other.gameObject.tag == MyConstManager.TagGOAL && gameObject.tag == MyConstManager.TagBALLTEST)
         {
             ResetAfterBallHitsGround ();
         }
-        else if (other.gameObject.tag == TagGOAL && gameObject.tag == TagBALLPLAY)
+        else if (other.gameObject.tag == MyConstManager.TagGOAL && gameObject.tag == MyConstManager.TagBALLPLAY)
         {
             SwitchScene();
         }
-        else if (other.gameObject.tag == TagCOLLECTIBLE)
+        else if (other.gameObject.tag == MyConstManager.TagCOLLECTIBLE)
         {
             SetCollectibleCollected (other.gameObject);
         }
-        else if (other.gameObject.tag == TagGRAVITYZONE)
+        else if (other.gameObject.tag == MyConstManager.TagGRAVITYZONE)
         {
             rb.useGravity = false;
             rb.AddForce (Vector3.up * speed);
         }
-        else if (other.gameObject.tag == TagWINDAREA)
+        else if (other.gameObject.tag == MyConstManager.TagWINDAREA)
         {
             inFanZone = true;
             fanDirection = other.gameObject.transform.position;
@@ -79,11 +72,11 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerExit (Collider other)
     {
-        if (other.gameObject.tag == TagGRAVITYZONE)
+        if (other.gameObject.tag == MyConstManager.TagGRAVITYZONE)
         {
             rb.useGravity = true;
         }
-        else if (other.gameObject.tag == TagWINDAREA)
+        else if (other.gameObject.tag == MyConstManager.TagWINDAREA)
         {
             inFanZone = false;
         }
@@ -91,12 +84,12 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter (Collision collision)
     {
-        if (collision.gameObject.tag == TagGROUND)
+        if (collision.gameObject.tag == MyConstManager.TagGROUND)
         {
             ResetAfterBallHitsGround ();
         }
 
-        else if (collision.gameObject.tag == TagJUMPAREA)
+        else if (collision.gameObject.tag == MyConstManager.TagJUMPAREA)
         {
             rb.AddForce (Vector3.up * jumpHight);
         }
@@ -124,11 +117,11 @@ public class Ball : MonoBehaviour
     public void SetBallAttached ()
     {
         isBallAttached = true;
-        if (gameObject.tag == TagBALLTEST)
+        if (gameObject.tag == MyConstManager.TagBALLTEST)
         {
             LevelManager.Instance.PlayMode = false;
         }
-        else if (gameObject.tag == TagBALLPLAY)
+        else if (gameObject.tag == MyConstManager.TagBALLPLAY)
         {
             LevelManager.Instance.PlayMode = true; 
         }
