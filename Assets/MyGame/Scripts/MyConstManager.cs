@@ -20,4 +20,7 @@ public class MyConstManager{
     public const string SceneGAMEOVER = "GameOver";
 
     public const string LEFT = "Left";
+
+    public const string TextPlayMode = "Play Mode";
+    public const string TextEditMode = "Edit Mode";
 }

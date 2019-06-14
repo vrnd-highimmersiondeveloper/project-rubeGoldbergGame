@@ -1,31 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
-public class TutorialController : MonoBehaviour {
-
+public class TutorialController : MonoBehaviour
+{
     public Ball editBall;
+    public Timer editTimer;
     public TextMeshProUGUI modeLabel;
+    public TextMeshProUGUI timerLabel;
     private bool modeToggled = false;
 
     private void Update()
     {
-        //Debug.Log("PlayMode " + LevelManager.Instance.PlayMode);
         if (LevelManager.Instance.PlayMode)
         {
-           
             if (!modeToggled)
             {
-                Debug.Log("PlayMode " + LevelManager.Instance.PlayMode);
-
-
-                editBall.gameObject.SetActive(false);
-                modeLabel.text = "Play Mode";
                 modeToggled = true;
-                Debug.Log("edit acitve " + editBall.enabled);
+                Debug.Log("PlayMode " + LevelManager.Instance.PlayMode);
+                editBall.gameObject.SetActive(false);
+                modeLabel.text = MyConstManager.TextPlayMode;
+                editTimer.ResetTimer();
+                timerLabel.text = editTimer.GetTime();
             }
-            
-        }   
+        }
+        else
+        {
+            timerLabel.text = editTimer.GetTime();
+        }
     }
 }
