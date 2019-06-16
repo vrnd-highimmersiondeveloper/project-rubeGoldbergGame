@@ -12,8 +12,10 @@ public class MyConstManager{
     public const string TagCOLLECTIBLE = "Collectible";
     public const string TagGRAVITYZONE = "GravityZone";
     public const string TagWINDAREA = "WindArea";
-    public const string TagGROUND = "Ground";
     public const string TagJUMPAREA = "JumpArea";
+
+    public const string TagGROUND = "Ground";
+    public const string TagPLAYGROUND = "TeleportGround";
 
     public const string SceneTUTORIAL = "02Tutorial";
     public const string SceneLEVEL1 = "Level1";

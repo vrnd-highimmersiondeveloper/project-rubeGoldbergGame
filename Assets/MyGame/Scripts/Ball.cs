@@ -61,22 +61,36 @@ public class Ball : MonoBehaviour
         {
             ResetLocalPositionAfterEditBallHitsGround();
         }
-
         else if (collision.gameObject.tag.ToLower() == MyConstManager.TagJUMPAREA.ToLower())
         {
             rb.AddForce(Vector3.up * jumpHight);
         }
-
-        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGOAL.ToLower() &&
-                 gameObject.tag.ToLower() == MyConstManager.TagBALLEDIT.ToLower())
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGOAL.ToLower() && isThisObjectEditBall())
         {
             ResetLocalPositionAfterEditBallHitsGround();
         }
-        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGOAL.ToLower() &&
-                 gameObject.tag.ToLower() == MyConstManager.TagBALLPLAY.ToLower())
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGOAL.ToLower() && isThisObjectPlayBall())
         {
             SwitchSceneAfterReachGoalWithPlayBall();
         }
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagPLAYGROUND.ToLower() && isThisObjectPlayBall())
+        {
+            SwitchScene(MyConstManager.SceneGAMEOVER);
+        }
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower() && isThisObjectPlayBall())
+        {
+            SwitchScene(MyConstManager.SceneGAMEOVER);
+        }
+    }
+
+    private bool isThisObjectEditBall()
+    {
+        return gameObject.tag.ToLower() == MyConstManager.TagBALLEDIT.ToLower();
+    }
+
+    private bool isThisObjectPlayBall()
+    {
+        return gameObject.tag.ToLower() == MyConstManager.TagBALLPLAY.ToLower();
     }
 
     private void OnTriggerExit(Collider other)
