@@ -90,6 +90,7 @@ public class Ball : MonoBehaviour
             inFanZone = false;
         }
     }
+
     private void SwitchSceneAfterReachGoalWithPlayBall()
     {
         Destroy(gameObject);
@@ -112,9 +113,6 @@ public class Ball : MonoBehaviour
             MyConstManager.rgbB, MyConstManager.rgbA);
     }
 
-
-
-
     private void ResetLocalPositionAfterEditBallHitsGround ()
     {
         gameObject.SetActive (false);
@@ -133,7 +131,7 @@ public class Ball : MonoBehaviour
                                                      ballDefaultPosZ);
     }
 
-    //Interaction with Hands
+    //Interaction with Hands, called from inspector
     public void MarkBallPlayAttached ()
     {
         if (gameObject.tag.ToLower () == MyConstManager.TagBALLEDIT.ToLower ())
@@ -142,7 +140,12 @@ public class Ball : MonoBehaviour
         }
         else if (gameObject.tag.ToLower () == MyConstManager.TagBALLPLAY.ToLower ())
         {
-            isBallPlayAttached = true;
+            if (!isBallPlayAttached)
+            {
+                ResetCollectiblesCollectedNumber();
+                SetAllCollectiblesActive();
+                isBallPlayAttached = true;
+            }
         }
 
         LevelManager.Instance.PlayMode = isBallPlayAttached;
