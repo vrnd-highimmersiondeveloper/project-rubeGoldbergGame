@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TutorialController : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class TutorialController : MonoBehaviour
     public TextMeshProUGUI modeLabel;
     public TextMeshProUGUI timerLabel;
     private bool modeToggled = false;
+
+    private void Start()
+    {
+        LevelManager.Instance.CurrentScene = SceneManager.GetActiveScene().name;
+    }
 
     private void Update()
     {

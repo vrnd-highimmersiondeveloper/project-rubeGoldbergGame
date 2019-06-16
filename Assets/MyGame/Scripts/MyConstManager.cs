@@ -23,4 +23,11 @@ public class MyConstManager{
 
     public const string TextPlayMode = "Play Mode";
     public const string TextEditMode = "Edit Mode";
+
+    public const bool showGrid = false;
+    public const float fadeOutTime = 2.0f;
+    public const float rgbR = 0.0f;
+    public const float rgbG = 0.0f;
+    public const float rgbB = 0.0f;
+    public const float rgbA = 1.0f;
 }

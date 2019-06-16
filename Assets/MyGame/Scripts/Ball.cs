@@ -38,61 +38,84 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == MyConstManager.TagGOAL && gameObject.tag == MyConstManager.TagBALLEDIT)
-        {
-            ResetAfterBallHitsGround ();
-        }
-        else if (other.gameObject.tag == MyConstManager.TagGOAL && gameObject.tag == MyConstManager.TagBALLPLAY)
-        {
-            SwitchScene();
-        }
-        else if (other.gameObject.tag == MyConstManager.TagCOLLECTIBLE)
+
+        if (other.gameObject.tag.ToLower () == MyConstManager.TagCOLLECTIBLE.ToLower ())
         {
             SetCollectibleCollected (other.gameObject);
         }
-        else if (other.gameObject.tag == MyConstManager.TagGRAVITYZONE)
+        else if (other.gameObject.tag.ToLower () == MyConstManager.TagGRAVITYZONE.ToLower ())
         {
             rb.useGravity = false;
             rb.AddForce (Vector3.up * speed);
         }
-        else if (other.gameObject.tag == MyConstManager.TagWINDAREA)
+        else if (other.gameObject.tag.ToLower () == MyConstManager.TagWINDAREA.ToLower  ())
         {
             inFanZone = true;
             fanDirection = other.gameObject.transform.position;
         }
     }
 
-    private static void SwitchScene()
+    private void OnCollisionEnter(Collision collision)
     {
-        SteamVR_LoadLevel.Begin("GameOver", false, 2.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+        if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower())
+        {
+            ResetLocalPositionAfterEditBallHitsGround();
+        }
+
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagJUMPAREA.ToLower())
+        {
+            rb.AddForce(Vector3.up * jumpHight);
+        }
+
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGOAL.ToLower() &&
+                 gameObject.tag.ToLower() == MyConstManager.TagBALLEDIT.ToLower())
+        {
+            ResetLocalPositionAfterEditBallHitsGround();
+        }
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGOAL.ToLower() &&
+                 gameObject.tag.ToLower() == MyConstManager.TagBALLPLAY.ToLower())
+        {
+            SwitchSceneAfterReachGoalWithPlayBall();
+        }
     }
 
-    private void OnTriggerExit (Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == MyConstManager.TagGRAVITYZONE)
+        if (other.gameObject.tag.ToLower() == MyConstManager.TagGRAVITYZONE.ToLower())
         {
             rb.useGravity = true;
         }
-        else if (other.gameObject.tag == MyConstManager.TagWINDAREA)
+        else if (other.gameObject.tag.ToLower() == MyConstManager.TagWINDAREA.ToLower())
         {
             inFanZone = false;
         }
     }
-
-    private void OnCollisionEnter (Collision collision)
+    private void SwitchSceneAfterReachGoalWithPlayBall()
     {
-        if (collision.gameObject.tag == MyConstManager.TagGROUND)
-        {
-            ResetAfterBallHitsGround ();
-        }
+        Destroy(gameObject);
 
-        else if (collision.gameObject.tag == MyConstManager.TagJUMPAREA)
+        if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneTUTORIAL))
         {
-            rb.AddForce (Vector3.up * jumpHight);
+            SwitchScene(MyConstManager.SceneLEVEL1);
+        }
+        else
+        {
+            SwitchScene(MyConstManager.SceneGAMEOVER);
         }
     }
 
-    private void ResetAfterBallHitsGround ()
+    private void SwitchScene (string nextScene)
+    {
+        SteamVR_LoadLevel.Begin (nextScene, 
+            MyConstManager.showGrid, MyConstManager.fadeOutTime, 
+            MyConstManager.rgbR, MyConstManager.rgbG, 
+            MyConstManager.rgbB, MyConstManager.rgbA);
+    }
+
+
+
+
+    private void ResetLocalPositionAfterEditBallHitsGround ()
     {
         gameObject.SetActive (false);
         ResetBallPosition ();
@@ -113,11 +136,11 @@ public class Ball : MonoBehaviour
     //Interaction with Hands
     public void MarkBallPlayAttached ()
     {
-        if (gameObject.tag == MyConstManager.TagBALLEDIT)
+        if (gameObject.tag.ToLower () == MyConstManager.TagBALLEDIT.ToLower ())
         {
             isBallPlayAttached = false;
         }
-        else if (gameObject.tag == MyConstManager.TagBALLPLAY)
+        else if (gameObject.tag.ToLower () == MyConstManager.TagBALLPLAY.ToLower ())
         {
             isBallPlayAttached = true;
         }
@@ -133,11 +156,11 @@ public class Ball : MonoBehaviour
     //Collectibles
     private void SetAllCollectiblesActive ()
     {
-        if(SceneManager.GetActiveScene().name != MyConstManager.SceneGAMEOVER)
+        if(SceneManager.GetActiveScene().name.ToLower () != MyConstManager.SceneGAMEOVER.ToLower ())
         {
             foreach (GameObject item in starList)
             {
-                item.SetActive(true);
+                item.SetActive (true);
             }
         }
     }
@@ -147,11 +170,13 @@ public class Ball : MonoBehaviour
         collectible.SetActive (false);
         numberCollected++;
         collectedCollectibles.text = numberCollected.ToString ();
+        LevelManager.Instance.NumberCollectiblesCollected = numberCollected;
     }
 
     private void ResetCollectiblesCollectedNumber ()
     {
         numberCollected = 0;
         collectedCollectibles.text = numberCollected.ToString ();
+        LevelManager.Instance.NumberCollectiblesCollected = numberCollected;
     }
 }
