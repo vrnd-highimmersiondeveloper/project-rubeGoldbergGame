@@ -20,7 +20,8 @@ public class MyConstManager{
     public const string SceneTUTORIAL = "02Tutorial";
     public const string SceneLEVEL1 = "Level1";
     public const string SceneGAMEOVER = "GameOver";
-    public const string SceneINTRO = "00IntrosceneQuill";
+    public const string SceneIDLE = "01IdleSceneQuill";
+    public const string SceneFirst = "00FirstSceneQuill";
 
     public const string LEFT = "Left";
 

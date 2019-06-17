@@ -8,28 +8,71 @@ using Valve.VR.Extras;
 
 public class LaserPointerManager : MonoBehaviour
 {
-    public GameObject leftHand;
-    public GameObject rightHand;
+    public GameObject leftHand = null;
+    public GameObject rightHand = null;
 
     private SteamVR_LaserPointer laserPointerLeft;
     private SteamVR_LaserPointer laserPointerRight;
+    GameObject leftLaser;
+    GameObject rightLaser;
+
+    private void Awake()
+    {
+        leftHand = GameObject.Find("LeftHand");
+        rightHand = GameObject.Find("RightHand");
+    }
 
     private void Start()
     {
-        laserPointerLeft = leftHand.GetComponent<SteamVR_LaserPointer>();
-        laserPointerRight = rightHand.GetComponent<SteamVR_LaserPointer>();
+        if (leftHand != null && rightHand != null)
+        {
+            laserPointerLeft = leftHand.GetComponent<SteamVR_LaserPointer>();
+            laserPointerRight = rightHand.GetComponent<SteamVR_LaserPointer>();
+
+            Debug.Log("Laser Pointer created");
+            Debug.Log("LP " + laserPointerLeft == null);
+            Debug.Log("LR " + laserPointerRight == null);
+        }
+        else
+        {
+            Debug.Log("Hands not found!");
+        }
+
     }
 
     //Destroy all laserObjects made by laserPointer in the next scene
-    private void DestroyLaserBeam(SteamVR_LaserPointer laserPointer)
+   /* public void DestroyLaserBeam(SteamVR_LaserPointer laserPointer)
     {
-        Transform[] tmpObjects = laserPointer.GetComponentsInChildren<Transform>();
+        //Debug.Log("in destroy beam, laser Pointer is: " + laserPointer.gameObject.name);
+
+        Transform[] tmpObjects = laserPointer.gameObject.GetComponentsInChildren<Transform>();
 
         for (int i = 0; i < tmpObjects.Length; i++)
         {
+            Debug.Log( i + "in for in destryo beam");
             if (tmpObjects[i].name.StartsWith("Beam"))
             {
-                Destroy(tmpObjects[i].gameObject);
+                //Destroy(tmpObjects[i].gameObject);
+                tmpObjects[i].gameObject.SetActive(false);
+                break;
+            }
+        }
+    }*/
+
+    public void DestroyLaserBeam(GameObject laser)
+    {
+        Debug.Log("in destroy beam, laser Pointer is: ");
+
+        Transform[] tmpObjects = laser.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < tmpObjects.Length; i++)
+        {
+            Debug.Log("in for in destryo beam");
+            if (tmpObjects[i].name.StartsWith("Beam"))
+            {
+                //Destroy(tmpObjects[i].gameObject);
+                tmpObjects[i].gameObject.SetActive(false);
+                Debug.Log(tmpObjects[i].gameObject.name);
                 break;
             }
         }
@@ -37,10 +80,12 @@ public class LaserPointerManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        DestroyLaserBeam(laserPointerLeft);
-        DestroyLaserBeam(laserPointerRight);
+        Debug.Log("in dESTROY");
+        //Debug.Log("in destroy beam, laser Pointer is: " + laserPointerLeft.gameObject.name);
+        DestroyLaserBeam(leftHand);
+        DestroyLaserBeam(rightHand);
 
-        Destroy(laserPointerLeft);
-        Destroy(laserPointerRight);
+        //Destroy(laserPointerLeft);
+        //Destroy(laserPointerRight);
     }
 }

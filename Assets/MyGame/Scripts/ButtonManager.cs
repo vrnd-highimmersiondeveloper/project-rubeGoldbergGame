@@ -6,12 +6,21 @@ public class ButtonManager : MonoBehaviour
 {
     public SteamVR_Action_Boolean grapPinch;
     public SteamVR_Input_Sources inputSource;
+
+    private GameObject laserPointerManager = null;
     private bool showGrid = false;
     private float fadeOutTime = 2.0f;
     private float rgbR = 0.0f;
     private float rgbG = 0.0f;
     private float rgbB = 0.0f;
     private float rgbA = 1.0f;
+
+
+    private void Awake()
+    {
+        laserPointerManager = GameObject.Find("LaserPointerManager");
+    }
+
 
     private void OnTriggerEnter (Collider other)
     {
@@ -30,6 +39,7 @@ public class ButtonManager : MonoBehaviour
         if (isRightLaserPointerUsed (other) && gameObject.name == MyConstManager.TagBTNTUTORIAL)
         {
             gameObject.SetActive (false);
+            //laserPointerManager.GetComponent<LaserPointerManager>().DestroyLaserBeam(other.transform.parent.gameObject);
             SteamVR_LoadLevel.Begin(MyConstManager.SceneTUTORIAL, showGrid, fadeOutTime, rgbR, rgbG, rgbB, rgbA);
         }
         else if (isLeftLaserPointerUsed (other) &&  gameObject.name == MyConstManager.TagBTNTUTORIAL)

@@ -73,6 +73,6 @@ public class LevelManager : GenericSingletonClass<LevelManager>
 
     public Vector3 GetPlayerInitPosition()
     {
-        return new Vector3(3f,1f,17f);
+        return new Vector3(2.404843f,1.385122f,16.3957f);
     }
 }

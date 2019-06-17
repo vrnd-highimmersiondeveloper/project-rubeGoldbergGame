@@ -6,6 +6,7 @@ public class TutorialController : MonoBehaviour
 {
     public Ball editBall;
     public Timer editTimer;
+    public GameObject initialPlayerPosition;
     public TextMeshProUGUI modeLabel;
     public TextMeshProUGUI timerLabel;
     private bool modeToggled = false;
@@ -15,7 +16,9 @@ public class TutorialController : MonoBehaviour
     {
         LevelManager.Instance.CurrentScene = SceneManager.GetActiveScene().name;
         myPlayer = GameObject.Find("Player");
-        myPlayer.GetComponent<Transform>().position = LevelManager.Instance.GetPlayerInitPosition();
+        //myPlayer.GetComponent<Transform>().position = LevelManager.Instance.GetPlayerInitPosition();
+        myPlayer.GetComponent<Transform>().position = initialPlayerPosition.GetComponent<Transform>().position;
+        myPlayer.GetComponent<Transform>().rotation = initialPlayerPosition.GetComponent<Transform>().rotation;
     }
 
     private void Update()

@@ -64,7 +64,17 @@ public class Ball : MonoBehaviour
         }
         else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower() && isThisObjectPlayBall())
         {
-            SwitchScene(MyConstManager.SceneGAMEOVER);
+            if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
+            {
+                SwitchScene(MyConstManager.SceneIDLE);
+                Destroy(gameObject);
+            }
+            else
+            {
+                SwitchScene(MyConstManager.SceneGAMEOVER);
+                Destroy(gameObject);
+            }
+            
         }
         else if (collision.gameObject.tag.ToLower() == MyConstManager.TagJUMPAREA.ToLower())
         {
@@ -80,7 +90,16 @@ public class Ball : MonoBehaviour
         }
         else if (collision.gameObject.tag.ToLower() == MyConstManager.TagPLAYGROUND.ToLower() && isThisObjectPlayBall())
         {
-            SwitchScene(MyConstManager.SceneGAMEOVER);
+            if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
+            {
+                SwitchScene(MyConstManager.SceneIDLE);
+                Destroy(gameObject);
+            }
+            else
+            {
+                SwitchScene(MyConstManager.SceneGAMEOVER);
+                Destroy(gameObject);
+            }
         }
 
     }
@@ -113,7 +132,7 @@ public class Ball : MonoBehaviour
 
         if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
         {
-            SwitchScene(MyConstManager.SceneINTRO);
+            SwitchScene(MyConstManager.SceneIDLE);
         }
         else
         {
