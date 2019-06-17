@@ -70,4 +70,9 @@ public class LevelManager : GenericSingletonClass<LevelManager>
 
         return collected;
     }
+
+    public Vector3 GetPlayerInitPosition()
+    {
+        return new Vector3(3f,1f,17f);
+    }
 }

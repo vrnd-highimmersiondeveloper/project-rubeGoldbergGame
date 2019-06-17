@@ -57,9 +57,14 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower())
+        Debug.Log("collision enter " + collision.gameObject.name + "is play ball " + isThisObjectPlayBall());
+        if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower() && isThisObjectEditBall())
         {
             ResetLocalPositionAfterEditBallHitsGround();
+        }
+        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower() && isThisObjectPlayBall())
+        {
+            SwitchScene(MyConstManager.SceneGAMEOVER);
         }
         else if (collision.gameObject.tag.ToLower() == MyConstManager.TagJUMPAREA.ToLower())
         {
@@ -77,10 +82,7 @@ public class Ball : MonoBehaviour
         {
             SwitchScene(MyConstManager.SceneGAMEOVER);
         }
-        else if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower() && isThisObjectPlayBall())
-        {
-            SwitchScene(MyConstManager.SceneGAMEOVER);
-        }
+
     }
 
     private bool isThisObjectEditBall()
@@ -109,14 +111,23 @@ public class Ball : MonoBehaviour
     {
         Destroy(gameObject);
 
-        if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneTUTORIAL))
+        if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
         {
-            SwitchScene(MyConstManager.SceneLEVEL1);
+            SwitchScene(MyConstManager.SceneINTRO);
         }
         else
         {
-            SwitchScene(MyConstManager.SceneGAMEOVER);
+            if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneTUTORIAL))
+            {
+                SwitchScene(MyConstManager.SceneLEVEL1);
+            }
+            else
+            {
+                SwitchScene(MyConstManager.SceneGAMEOVER);
+            }
         }
+
+
     }
 
     private void SwitchScene (string nextScene)

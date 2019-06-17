@@ -9,10 +9,13 @@ public class TutorialController : MonoBehaviour
     public TextMeshProUGUI modeLabel;
     public TextMeshProUGUI timerLabel;
     private bool modeToggled = false;
+    private GameObject myPlayer;
 
     private void Start()
     {
         LevelManager.Instance.CurrentScene = SceneManager.GetActiveScene().name;
+        myPlayer = GameObject.Find("Player");
+        myPlayer.GetComponent<Transform>().position = LevelManager.Instance.GetPlayerInitPosition();
     }
 
     private void Update()

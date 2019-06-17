@@ -1,0 +1,335 @@
+fileFormatVersion: 2
+guid: f03953b0183db95489157dd1bce76ee8
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Abtn
+    100002: Bbtn
+    100004: //RootNode
+    100006: draw
+    100008: draw-label
+    100010: first_drawing
+    100012: Hand
+    100014: hand
+    100016: handle1
+    100018: handle1 1
+    100020: hands
+    100022: lefthand
+    100024: Map
+    100026: NewLayer0
+    100028: NewLayer2
+    100030: NewLayer4
+    100032: ocbtn
+    100034: ocbtn 1
+    100036: righthand
+    100038: Root
+    100040: roundhardware
+    100042: roundhardware 1
+    100044: RTthumbstick
+    100046: RTthumbstick 1
+    100048: tptrigger
+    100050: trigger
+    100052: viewpoints
+    100054: Xbtn
+    100056: Ybtn
+    400000: Abtn
+    400002: Bbtn
+    400004: //RootNode
+    400006: draw
+    400008: draw-label
+    400010: first_drawing
+    400012: Hand
+    400014: hand
+    400016: handle1
+    400018: handle1 1
+    400020: hands
+    400022: lefthand
+    400024: Map
+    400026: NewLayer0
+    400028: NewLayer2
+    400030: NewLayer4
+    400032: ocbtn
+    400034: ocbtn 1
+    400036: righthand
+    400038: Root
+    400040: roundhardware
+    400042: roundhardware 1
+    400044: RTthumbstick
+    400046: RTthumbstick 1
+    400048: tptrigger
+    400050: trigger
+    400052: viewpoints
+    400054: Xbtn
+    400056: Ybtn
+    2100000: NewLayer0_single
+    2100002: draw-label_single
+    2100004: handle1_single
+    2100006: tptrigger_single
+    2100008: ocbtn_single
+    2100010: ocbtn_double
+    2100012: Ybtn_single
+    2100014: Ybtn_double
+    2100016: Xbtn_single
+    2100018: Xbtn_double
+    2100020: RTthumbstick_single
+    2100022: RTthumbstick_double
+    2100024: roundhardware_single
+    2100026: NewLayer2_single
+    2100028: Hand_single
+    2100030: NewLayer4_single
+    2100032: hand_single
+    2100034: trigger_single
+    2100036: Abtn_single
+    2100038: Abtn_double
+    2100040: Bbtn_single
+    2100042: Bbtn_double
+    2300000: Abtn
+    2300002: Bbtn
+    2300004: draw-label
+    2300006: Hand
+    2300008: hand
+    2300010: handle1
+    2300012: handle1 1
+    2300014: NewLayer0
+    2300016: NewLayer2
+    2300018: NewLayer4
+    2300020: ocbtn
+    2300022: ocbtn 1
+    2300024: roundhardware
+    2300026: roundhardware 1
+    2300028: RTthumbstick
+    2300030: RTthumbstick 1
+    2300032: tptrigger
+    2300034: trigger
+    2300036: Xbtn
+    2300038: Ybtn
+    3300000: Abtn
+    3300002: Bbtn
+    3300004: draw-label
+    3300006: Hand
+    3300008: hand
+    3300010: handle1
+    3300012: handle1 1
+    3300014: NewLayer0
+    3300016: NewLayer2
+    3300018: NewLayer4
+    3300020: ocbtn
+    3300022: ocbtn 1
+    3300024: roundhardware
+    3300026: roundhardware 1
+    3300028: RTthumbstick
+    3300030: RTthumbstick 1
+    3300032: tptrigger
+    3300034: trigger
+    3300036: Xbtn
+    3300038: Ybtn
+    4300000: NewLayer0
+    4300002: draw-label
+    4300004: handle1
+    4300006: tptrigger
+    4300008: ocbtn
+    4300010: Ybtn
+    4300012: Xbtn
+    4300014: RTthumbstick
+    4300016: roundhardware
+    4300018: NewLayer2
+    4300020: Hand
+    4300022: NewLayer4
+    4300024: hand
+    4300026: trigger
+    4300028: handle1
+    4300030: ocbtn
+    4300032: Abtn
+    4300034: Bbtn
+    4300036: RTthumbstick
+    4300038: roundhardware
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Abtn_double
+    second: {fileID: 2100000, guid: 9e9d54b2e0753e147bbc0af8b9708a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Abtn_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bbtn_double
+    second: {fileID: 2100000, guid: 9e9d54b2e0753e147bbc0af8b9708a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bbtn_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NewLayer0_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NewLayer2_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NewLayer4_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RTthumbstick_double
+    second: {fileID: 2100000, guid: 9e9d54b2e0753e147bbc0af8b9708a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RTthumbstick_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Xbtn_double
+    second: {fileID: 2100000, guid: 9e9d54b2e0753e147bbc0af8b9708a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Xbtn_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ybtn_double
+    second: {fileID: 2100000, guid: 9e9d54b2e0753e147bbc0af8b9708a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ybtn_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: draw-label_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hand_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle1_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ocbtn_double
+    second: {fileID: 2100000, guid: 9e9d54b2e0753e147bbc0af8b9708a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ocbtn_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roundhardware_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tptrigger_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trigger_single
+    second: {fileID: 2100000, guid: 60d8fe342730d584b9d656d87b6d18ac, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
