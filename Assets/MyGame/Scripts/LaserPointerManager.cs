@@ -29,6 +29,9 @@ public class LaserPointerManager : MonoBehaviour
             laserPointerLeft = leftHand.GetComponent<SteamVR_LaserPointer>();
             laserPointerRight = rightHand.GetComponent<SteamVR_LaserPointer>();
 
+            ActivateLaserBeam(leftHand);
+            ActivateLaserBeam(rightHand);
+
             Debug.Log("Laser Pointer created");
             Debug.Log("LP " + laserPointerLeft == null);
             Debug.Log("LR " + laserPointerRight == null);
@@ -59,7 +62,7 @@ public class LaserPointerManager : MonoBehaviour
         }
     }*/
 
-    public void DestroyLaserBeam(GameObject laser)
+    public void DeactivateLaserBeam(GameObject laser)
     {
         Debug.Log("in destroy beam, laser Pointer is: ");
 
@@ -78,12 +81,37 @@ public class LaserPointerManager : MonoBehaviour
         }
     }
 
+
+    public void ActivateLaserBeam(GameObject laser)
+    {
+        Debug.Log("in activate beam, laser Pointer is: ");
+
+        Transform[] tmpObjects = laser.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < tmpObjects.Length; i++)
+        {
+            Debug.Log("in for in activate beam");
+            Debug.Log("obj name " + tmpObjects[i].name);
+            if (tmpObjects[i].name.StartsWith("Beam"))
+            {
+                //Destroy(tmpObjects[i].gameObject);
+                tmpObjects[i].gameObject.SetActive(true);
+                Debug.Log(tmpObjects[i].gameObject.name);
+                break;
+            }
+        }
+    }
     private void OnDestroy()
     {
         Debug.Log("in dESTROY");
-        //Debug.Log("in destroy beam, laser Pointer is: " + laserPointerLeft.gameObject.name);
-        DestroyLaserBeam(leftHand);
-        DestroyLaserBeam(rightHand);
+        
+        if(LevelManager.Instance.CurrentScene == "00FirstSceneQuill" ||
+            LevelManager.Instance.CurrentScene == "01IdleSceneQuill")
+        {
+            DeactivateLaserBeam(leftHand);
+            DeactivateLaserBeam(rightHand);
+        }
+
 
         //Destroy(laserPointerLeft);
         //Destroy(laserPointerRight);
