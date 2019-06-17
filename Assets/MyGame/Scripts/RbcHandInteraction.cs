@@ -20,6 +20,11 @@ public class RbcHandInteraction : MonoBehaviour
     public bool hasSwipedRight = false;
     private bool isJoystickClicked = false;
 
+    private void Start()
+    {
+        objectmenuManager = GameObject.Find("SimpleConstrutionItemManager(Clone)").GetComponent<HandMenuObjectManager>();
+    }
+
     private void SwipeRight ()
     {
         objectmenuManager.MenuRight ();

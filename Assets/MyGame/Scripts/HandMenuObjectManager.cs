@@ -3,48 +3,42 @@ using UnityEngine;
 
 public class HandMenuObjectManager : MonoBehaviour
 {
-    public List<GameObject> objectList;
     public List<GameObject> objectPrefabList;
     public int currentObjectIndex = 0;
-
-	void Start ()
-    {
-        foreach (Transform child in transform)
-        {
-            objectList.Add (child.gameObject);
-        }
-	}
+    public List<GameObject> previewItemList;
 
     public void MenuLeft ()
     {
-        objectList[currentObjectIndex].SetActive (false);
+        Debug.Log("in Menu Left");
+        Debug.Log("preview length" + previewItemList.Count);
+        previewItemList[currentObjectIndex].SetActive (false);
         currentObjectIndex--;
 
         if (currentObjectIndex < 0)
         {
-            currentObjectIndex = objectList.Count - 1;
+            currentObjectIndex = previewItemList.Count - 1;
         }
 
-        objectList[currentObjectIndex].SetActive (true);
+        previewItemList[currentObjectIndex].SetActive (true);
     }
 
     public void MenuRight ()
     {
-        objectList[currentObjectIndex].SetActive (false);
+        previewItemList[currentObjectIndex].SetActive (false);
         currentObjectIndex++;
 
-        if (currentObjectIndex >= objectList.Count)
+        if (currentObjectIndex >= previewItemList.Count)
         {
             currentObjectIndex = 0;
         }
 
-        objectList[currentObjectIndex].SetActive (true);
+        previewItemList[currentObjectIndex].SetActive (true);
     }
 
     public void SpawnCurrentObject ()
     {
         Instantiate(objectPrefabList[currentObjectIndex], 
-            objectList[currentObjectIndex].transform.position, 
-            objectList[currentObjectIndex].transform.rotation);
+            previewItemList[currentObjectIndex].transform.position, 
+            previewItemList[currentObjectIndex].transform.rotation);
     }
 }
