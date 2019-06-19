@@ -13,6 +13,7 @@ public class MyConstManager{
     public const string TagGRAVITYZONE = "GravityZone";
     public const string TagWINDAREA = "WindArea";
     public const string TagJUMPAREA = "JumpArea";
+    public const string TagPLAYER = "Player";
 
     public const string TagGROUND = "Ground";
     public const string TagPLAYGROUND = "TeleportGround";
@@ -22,6 +23,7 @@ public class MyConstManager{
     public const string SceneGAMEOVER = "GameOver";
     public const string SceneIDLE = "01IdleSceneQuill";
     public const string SceneFirst = "00FirstSceneQuill";
+
 
     public const string LEFT = "Left";
 

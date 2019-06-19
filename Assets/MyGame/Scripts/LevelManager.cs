@@ -10,6 +10,10 @@ public class LevelManager : GenericSingletonClass<LevelManager>
     private bool playMode = false;
     private int maxTutorialCollectibles = 3;
     private string currentScene = "none";
+    private GameObject leftHand;
+    private GameObject rightHand;
+    private GameObject simpleCIMenu;
+
 
     public int NumberCollectiblesCollected
     {
@@ -49,6 +53,45 @@ public class LevelManager : GenericSingletonClass<LevelManager>
         set
         {
             currentScene = value;
+        }
+    }
+
+    public GameObject LeftHand
+    {
+        get
+        {
+            return leftHand;
+        }
+
+        set
+        {
+            leftHand = value;
+        }
+    }
+
+    public GameObject RightHand
+    {
+        get
+        {
+            return rightHand;
+        }
+
+        set
+        {
+            rightHand = value;
+        }
+    }
+
+    public GameObject SimpleCIMenu
+    {
+        get
+        {
+            return simpleCIMenu;
+        }
+
+        set
+        {
+            simpleCIMenu = value;
         }
     }
 
