@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IdleController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class IdleController : MonoBehaviour
 
     void Start ()
     {
+        LevelManager.Instance.CurrentScene = SceneManager.GetActiveScene().name;
         player = LevelManager.Instance.Player;
         player.GetComponent<Transform>().position = LevelManager.Instance.QuillPosition;
         player.GetComponent<Transform>().rotation = LevelManager.Instance.QuillRotation;

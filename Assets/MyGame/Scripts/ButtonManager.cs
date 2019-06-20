@@ -7,7 +7,7 @@ public class ButtonManager : MonoBehaviour
     public SteamVR_Action_Boolean grapPinch;
     public SteamVR_Input_Sources inputSource;
 
-    private GameObject laserPointerManager = null;
+    //private GameObject laserPointerManager = null;
     private bool showGrid = false;
     private float fadeOutTime = 2.0f;
     private float rgbR = 0.0f;
@@ -18,7 +18,7 @@ public class ButtonManager : MonoBehaviour
 
     private void Awake()
     {
-        laserPointerManager = GameObject.Find("LaserPointerManager");
+      //  laserPointerManager = GameObject.Find("LaserPointerManager");
     }
 
 
