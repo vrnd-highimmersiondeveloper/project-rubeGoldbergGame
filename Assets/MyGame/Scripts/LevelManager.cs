@@ -24,13 +24,11 @@ public class LevelManager : GenericSingletonClass<LevelManager>
     {
         get
         {
-            Debug.Log("get nbr collected collectibles " + numberCollectibesCollected);
             return numberCollectibesCollected;
         }
 
         set
         {
-            Debug.Log("set nbr collected collectibles " + numberCollectibesCollected);
             numberCollectibesCollected = value;
         }
     }
@@ -65,7 +63,6 @@ public class LevelManager : GenericSingletonClass<LevelManager>
     {
         get
         {
-            Debug.Log("in left hand");
             return leftHand;
         }
 
@@ -110,7 +107,6 @@ public class LevelManager : GenericSingletonClass<LevelManager>
 
         set
         {
-            Debug.Log("set quill pos");
             quillPosition = value;
         }
     }
@@ -176,8 +172,6 @@ public class LevelManager : GenericSingletonClass<LevelManager>
     public bool AreAllCollectiblesCollected (string sceneName)
     {
         bool collected = false;
-
-        Debug.Log("name scene:  " + currentScene + " number colletibles in scene" + maxTutorialCollectibles + " I've collected " + numberCollectibesCollected);
 
         if (sceneName.ToLower () == MyConstManager.SceneTUTORIAL.ToLower())
         {

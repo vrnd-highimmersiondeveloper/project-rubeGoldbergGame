@@ -17,9 +17,8 @@ public class IntroController : MonoBehaviour
         LevelManager.Instance.RightHand = rightHand;
         LevelManager.Instance.LeftHand = leftHand;
         LevelManager.Instance.SimpleCIMenu = simpleCIMenu;
-        Debug.Log("initioal position .......................");
         LevelManager.Instance.QuillPosition = initialPlayerPosition.GetComponent<Transform>().position;
-       // LevelManager.Instance.QuillRotation = initialPlayerPosition.GetComponent<Transform>().rotation;
+        LevelManager.Instance.QuillRotation = initialPlayerPosition.GetComponent<Transform>().rotation;
     }
 
     private void Start()
