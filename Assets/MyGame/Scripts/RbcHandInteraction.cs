@@ -22,7 +22,8 @@ public class RbcHandInteraction : MonoBehaviour
 
     private void Start()
     {
-        objectmenuManager = GameObject.Find("SimpleConstrutionItemManager(Clone)").GetComponent<HandMenuObjectManager>();
+        //objectmenuManager = GameObject.Find("SimpleConstrutionItemManager(Clone)").GetComponent<HandMenuObjectManager>();
+        objectmenuManager = LevelManager.Instance.SimpleCIMenu.GetComponent<HandMenuObjectManager>();
     }
 
     private void SwipeRight ()

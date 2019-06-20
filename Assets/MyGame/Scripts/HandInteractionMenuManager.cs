@@ -5,36 +5,42 @@ using Valve.VR.Extras;
 
 public class HandInteractionMenuManager : MonoBehaviour
 {
-    private GameObject leftHand = null;
-    private GameObject rightHand = null;
+    public GameObject leftHand = null;
+    public GameObject rightHand = null;
 
-    private SteamVR_LaserPointer laserPointerLeft;
-    private SteamVR_LaserPointer laserPointerRight;
+    private SteamVR_LaserPointer laserPointerLeft = null;
+    private SteamVR_LaserPointer laserPointerRight = null;
 
-    private GameObject laserBeamLeft;
-    private GameObject laserBeamRight;
+    public GameObject laserBeamLeft = null;
+    public GameObject laserBeamRight = null;
 
-    private GameObject simpleCIMenu;
+    private GameObject simpleCIMenu = null;
 
     private void Awake()
     {
         leftHand = LevelManager.Instance.LeftHand;
         rightHand = LevelManager.Instance.RightHand;
 
+        laserBeamLeft = LevelManager.Instance.LeftBeam;
+        laserBeamRight = LevelManager.Instance.RightBeam;
+
         laserPointerLeft = leftHand.GetComponent<SteamVR_LaserPointer>();
         laserPointerRight = rightHand.GetComponent<SteamVR_LaserPointer>();
-
-        laserBeamLeft = InitLaserBeam(leftHand);
-        laserBeamRight = InitLaserBeam(rightHand);
 
         simpleCIMenu = LevelManager.Instance.SimpleCIMenu;
     }
 
     private void Start()
     {
+        if (laserBeamLeft == null || laserBeamRight == null)
+        {
+            InitLaserBeam();
+        }
+
         if (LevelManager.Instance.CurrentScene == MyConstManager.SceneFirst)
         {
             EnableLaserPointerComponent();
+            DeactivateSimpleCIMenu();
             ActivateLaserBeam();
         }
         else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneIDLE)
@@ -56,42 +62,11 @@ public class HandInteractionMenuManager : MonoBehaviour
         }
     }
 
-    public void ActivateSimpleCIMenu()
+    private void InitLaserBeam()
     {
-        simpleCIMenu.SetActive(true);
-    }
-    public void DeactivateLaserBeam()
-    {
-        DeactivateLaserBeam(leftHand);
-        DeactivateLaserBeam(rightHand);
-    }
-
-    public void ActivateLaserBeam()
-    {
-        ActivateLaserBeam(leftHand);
-        ActivateLaserBeam(rightHand);
-    }
-
-    public void ActivateLaserBeam(GameObject laserBeamObject)
-    {
-        laserBeamObject.SetActive(true);
-    }
-
-    public void DeactivateLaserBeam(GameObject laserBeamObject)
-    {
-        laserBeamObject.SetActive(false);
-    }
-
-    public void EnableLaserPointerComponent()
-    {
-        leftHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
-        rightHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
-    }
-
-    public void DisableLaserPointerComponent()
-    {
-        leftHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
-        rightHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
+        LevelManager.Instance.LeftBeam = laserBeamLeft =  InitLaserBeam(leftHand);
+        LevelManager.Instance.RightBeam = laserBeamRight = InitLaserBeam(rightHand);
+        
     }
 
     public GameObject InitLaserBeam(GameObject laser)
@@ -114,6 +89,50 @@ public class HandInteractionMenuManager : MonoBehaviour
         }
 
         return beamObject;
+    }
+
+    public void ActivateSimpleCIMenu()
+    {
+        simpleCIMenu.SetActive(true);
+    }
+
+    public void DeactivateSimpleCIMenu()
+    {
+        simpleCIMenu.SetActive(false);
+    }
+
+    public void DeactivateLaserBeam()
+    {
+        DeactivateLaserBeam(laserBeamLeft);
+        DeactivateLaserBeam(laserBeamRight);
+    }
+
+    public void ActivateLaserBeam()
+    {
+        ActivateLaserBeam(laserBeamLeft);
+        ActivateLaserBeam(laserBeamRight);
+    }
+
+    public void ActivateLaserBeam(GameObject laserBeamObject)
+    {
+        laserBeamObject.SetActive(true);
+    }
+
+    public void DeactivateLaserBeam(GameObject laserBeamObject)
+    {
+        laserBeamObject.SetActive(false);
+    }
+
+    public void EnableLaserPointerComponent()
+    {
+        leftHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
+        rightHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
+    }
+
+    public void DisableLaserPointerComponent()
+    {
+        leftHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
+        rightHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
     }
 
 }

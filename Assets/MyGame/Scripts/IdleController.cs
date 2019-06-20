@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class IdleController : MonoBehaviour {
+public class IdleController : MonoBehaviour
+{
+    private GameObject player = null;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    void Start ()
+    {
+        player = LevelManager.Instance.Player;
+        player.GetComponent<Transform>().position = LevelManager.Instance.QuillPosition;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
