@@ -8,6 +8,7 @@ public class IdleController : MonoBehaviour
     {
         player = LevelManager.Instance.Player;
         player.GetComponent<Transform>().position = LevelManager.Instance.QuillPosition;
+        player.GetComponent<Transform>().rotation = LevelManager.Instance.QuillRotation;
     }
 	
 }
