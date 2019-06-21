@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
 {
     private const float speed = 10f;
     private const float jumpHight = 200f;
-    public List<GameObject> starList;
+    private List<GameObject> starList;
     public TextMeshProUGUI collectedCollectibles;
 
     private Rigidbody rb;
@@ -38,7 +38,6 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-
         if (other.gameObject.tag.ToLower () == MyConstManager.TagCOLLECTIBLE.ToLower ())
         {
             SetCollectibleCollected (other.gameObject);
@@ -71,7 +70,7 @@ public class Ball : MonoBehaviour
             }
             else
             {
-                SwitchScene(MyConstManager.SceneGAMEOVER);
+                SwitchScene(MyConstManager.SceneIDLE);
                 Destroy(gameObject);
             }
             
@@ -97,7 +96,7 @@ public class Ball : MonoBehaviour
             }
             else
             {
-                SwitchScene(MyConstManager.SceneGAMEOVER);
+                SwitchScene(MyConstManager.SceneIDLE);
                 Destroy(gameObject);
             }
         }
@@ -128,25 +127,42 @@ public class Ball : MonoBehaviour
 
     private void SwitchSceneAfterReachGoalWithPlayBall()
     {
-        Destroy(gameObject);
 
         if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
         {
             SwitchScene(MyConstManager.SceneIDLE);
         }
-        else
+        else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneLEVEL1)
         {
-            if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneTUTORIAL))
-            {
-                SwitchScene(MyConstManager.SceneLEVEL1);
-            }
-            else
-            {
-                SwitchScene(MyConstManager.SceneGAMEOVER);
-            }
+            SwitchToLevel2();
         }
 
+        Destroy(gameObject);
+    }
 
+    private void SwitchToLevel1()
+    {
+        if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneTUTORIAL))
+        {
+            LevelManager.Instance.Level1Locked1 = true;
+            SwitchScene(MyConstManager.SceneLEVEL1);
+        }
+        else
+        {
+            SwitchScene(MyConstManager.SceneIDLE);
+        }
+    }
+
+    private void SwitchToLevel2()
+    {
+        if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneLEVEL1))
+        {
+            SwitchScene(MyConstManager.SceneLEVEL2);
+        }
+        else
+        {
+            SwitchScene(MyConstManager.SceneIDLE);
+        }
     }
 
     private void SwitchScene (string nextScene)
@@ -203,12 +219,9 @@ public class Ball : MonoBehaviour
     //Collectibles
     private void SetAllCollectiblesActive ()
     {
-        if(SceneManager.GetActiveScene().name.ToLower () != MyConstManager.SceneGAMEOVER.ToLower ())
+        foreach (GameObject item in starList)
         {
-            foreach (GameObject item in starList)
-            {
-                item.SetActive (true);
-            }
+            item.SetActive (true);
         }
     }
 
@@ -225,5 +238,16 @@ public class Ball : MonoBehaviour
         numberCollected = 0;
         collectedCollectibles.text = numberCollected.ToString ();
         LevelManager.Instance.NumberCollectiblesCollected = numberCollected;
+    }
+
+    public void SetCollectibles(List<GameObject> collectibles)
+    {
+        starList = collectibles;
+        SaveInLevelManagerMaxCollectibles(collectibles.Count);
+    }
+
+    private void SaveInLevelManagerMaxCollectibles(int numberCollectibles)
+    {
+        LevelManager.Instance.MaxCollectibles = numberCollectibles;
     }
 }

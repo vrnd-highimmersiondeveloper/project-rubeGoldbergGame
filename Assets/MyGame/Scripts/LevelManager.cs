@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class LevelManager : GenericSingletonClass<LevelManager>
 {
-    public int numberCollectibesCollected = 0;
     public bool playMode = false;
+    public int numberCollectibesCollected = 0;
     private int maxTutorialCollectibles = 3;
+    private int maxCollectibles = 0;
     private string currentScene = "none";
     private GameObject player;
     public GameObject leftHand;
@@ -18,6 +19,10 @@ public class LevelManager : GenericSingletonClass<LevelManager>
     public GameObject simpleCIMenu;
     public Vector3 quillPosition;
     public Quaternion quillRotation;
+    private bool level1Locked = true;
+    private bool level2Locked = true;
+    private bool level3Locked = true;
+    private bool level4Locked = true;
 
 
     public int NumberCollectiblesCollected
@@ -164,6 +169,32 @@ public class LevelManager : GenericSingletonClass<LevelManager>
         }
     }
 
+    public int MaxCollectibles
+    {
+        get
+        {
+            return maxCollectibles;
+        }
+
+        set
+        {
+            maxCollectibles = value;
+        }
+    }
+
+    public bool Level1Locked1
+    {
+        get
+        {
+            return level1Locked;
+        }
+
+        set
+        {
+            level1Locked = value;
+        }
+    }
+
     public void DeactivateEditBall(Ball ball)
     {
         ball.enabled = false;
@@ -177,6 +208,10 @@ public class LevelManager : GenericSingletonClass<LevelManager>
         {
             collected = (numberCollectibesCollected == maxTutorialCollectibles);
         }
+        else if (sceneName.ToLower() == MyConstManager.SceneLEVEL1.ToLower())
+        {
+            collected = (numberCollectibesCollected == maxCollectibles);
+        }
 
         return collected;
     }
@@ -184,6 +219,11 @@ public class LevelManager : GenericSingletonClass<LevelManager>
     public Vector3 GetPlayerInitPosition()
     {
         return new Vector3(2.404843f,1.385122f,16.3957f);
+    }
+
+    public Quaternion GetPlayerInitRotation()
+    {
+        return Quaternion.Euler(0.0f, 180.0f, 0.0f);
     }
 
 

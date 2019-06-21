@@ -32,7 +32,6 @@ public class HandInteractionMenuManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("I am there -----------------------------------------------------------------------------" + LevelManager.Instance.CurrentScene);
         if (laserBeamLeft == null || laserBeamRight == null)
         {
             InitLaserBeam();
@@ -46,7 +45,6 @@ public class HandInteractionMenuManager : MonoBehaviour
         }
         else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneIDLE)
         {
-            Debug.Log("in handinteration debug idle");
             DeactivateSimpleCIMenu();
             EnableLaserPointerComponent();
             ActivateLaserBeam();
