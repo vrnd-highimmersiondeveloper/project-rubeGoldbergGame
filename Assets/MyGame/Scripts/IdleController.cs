@@ -14,14 +14,14 @@ public class IdleController : MonoBehaviour
         player.GetComponent<Transform>().position = LevelManager.Instance.QuillPosition;
         player.GetComponent<Transform>().rotation = LevelManager.Instance.QuillRotation;
 
-        UpdateLevel1Locked();
+        UpdateLevel1Unlocked();
     }
 
-    public void UpdateLevel1Locked()
+    public void UpdateLevel1Unlocked()
     {
-        if (LevelManager.Instance.Level1Locked1)
+        if (LevelManager.Instance.CheckLevelUnlocked(1))
         {
-            levelLockedText.text = "OPEN TO PLAY";
+            levelLockedText.text = "Unlocked";
         }
     }
 	

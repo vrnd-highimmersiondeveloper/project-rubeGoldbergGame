@@ -144,7 +144,7 @@ public class Ball : MonoBehaviour
     {
         if (LevelManager.Instance.AreAllCollectiblesCollected(MyConstManager.SceneTUTORIAL))
         {
-            LevelManager.Instance.Level1Locked1 = true;
+            //LevelManager.Instance.Level1Locked = true;
             SwitchScene(MyConstManager.SceneLEVEL1);
         }
         else
