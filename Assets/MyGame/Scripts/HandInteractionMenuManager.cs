@@ -32,6 +32,7 @@ public class HandInteractionMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(LevelManager.Instance.CurrentScene + "in Start");
         if (laserBeamLeft == null || laserBeamRight == null)
         {
             InitLaserBeam();
@@ -40,26 +41,49 @@ public class HandInteractionMenuManager : MonoBehaviour
         if (LevelManager.Instance.CurrentScene == MyConstManager.SceneFirst)
         {
             EnableLaserPointerComponent();
-            DeactivateSimpleCIMenu();
+            //DeactivateSimpleCIMenu();
             ActivateLaserBeam();
         }
         else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneIDLE)
         {
-            DeactivateSimpleCIMenu();
             EnableLaserPointerComponent();
+            //DeactivateSimpleCIMenu();
             ActivateLaserBeam();
         }
         else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneLEVEL1)
         {
-            DisableLaserPointerComponent();
-            DeactivateLaserBeam();
+            //DisableLaserPointerComponent();
+            //DeactivateLaserBeam();
             ActivateSimpleCIMenu();
         }
         else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
         {
+            //DisableLaserPointerComponent();
+            //DeactivateLaserBeam();
+            ActivateSimpleCIMenu();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log(LevelManager.Instance.CurrentScene + "in Destroy");
+        if (LevelManager.Instance.CurrentScene == MyConstManager.SceneFirst)
+        {
             DisableLaserPointerComponent();
             DeactivateLaserBeam();
-            ActivateSimpleCIMenu();
+        }
+        else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneIDLE)
+        {
+            DisableLaserPointerComponent();
+            DeactivateLaserBeam();
+        }
+        else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneLEVEL1)
+        {
+            DeactivateSimpleCIMenu();
+        }
+        else if (LevelManager.Instance.CurrentScene == MyConstManager.SceneTUTORIAL)
+        {
+            DeactivateSimpleCIMenu();
         }
     }
 
@@ -74,13 +98,11 @@ public class HandInteractionMenuManager : MonoBehaviour
     {
         GameObject beamObject = null;
 
-        Debug.Log("find beam object");
 
         Transform[] tmpObjects = laser.GetComponentsInChildren<Transform>();
 
         for (int i = 0; i < tmpObjects.Length; i++)
         {
-            Debug.Log("obj name " + tmpObjects[i].name);
             if (tmpObjects[i].name.StartsWith("Beam"))
             {
                 beamObject = tmpObjects[i].gameObject;

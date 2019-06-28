@@ -56,7 +56,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision enter " + collision.gameObject.name + "is play ball " + isThisObjectPlayBall());
+        Debug.Log("Ball collision enter " + collision.gameObject.name + " is play ball " + isThisObjectPlayBall());
         if (collision.gameObject.tag.ToLower() == MyConstManager.TagGROUND.ToLower() && isThisObjectEditBall())
         {
             ResetLocalPositionAfterEditBallHitsGround();

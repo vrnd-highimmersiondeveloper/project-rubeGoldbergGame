@@ -44,6 +44,7 @@ public class TutorialController : MonoBehaviour
                 modeToggled = true;
                 Debug.Log("PlayMode " + LevelManager.Instance.PlayMode);
                 editBall.gameObject.SetActive(false);
+
                 modeLabel.text = MyConstManager.TextPlayMode;
                 editTimer.ResetTimer();
                 timerLabel.text = editTimer.GetTime();
@@ -53,5 +54,11 @@ public class TutorialController : MonoBehaviour
         {
             timerLabel.text = editTimer.GetTime();
         }
+    }
+
+    public void SetPlayBallActive()
+    {
+        playBall.MarkBallPlayAttached();
+        Destroy(editBall.gameObject);
     }
 }

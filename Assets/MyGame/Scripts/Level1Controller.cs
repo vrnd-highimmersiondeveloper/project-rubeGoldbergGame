@@ -53,6 +53,7 @@ public class Level1Controller : MonoBehaviour
     private void InitializeBallProperties()
     {
         LevelManager.Instance.MaxCollectibles = starList.Count;
+        LevelManager.Instance.PlayMode = false;
 
         playBall.GetComponent<Ball>().SetCollectibles(starList);
         editBall.GetComponent<Ball>().SetCollectibles(starList);
